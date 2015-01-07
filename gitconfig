@@ -1,0 +1,12 @@
+[user]
+	name = Alejandro E
+	email = alejandro@plasticbliss.com
+[push]
+	default = simple
+[alias]
+	s = status
+	co = checkout
+	logp = log --pretty=format:\"%h %s\" --graph
+	rb = rebase
+	l = log --decorate --graph
+	a = add

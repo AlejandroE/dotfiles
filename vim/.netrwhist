@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/Users/Alejandro/.vim/bundle'
+let g:netrw_dirhist_2='/Users/Alejandro/.vim'
+let g:netrw_dirhist_3='/Users/Alejandro'
+let g:netrw_dirhist_4='/Users/Alejandro/.zsh'
