@@ -9,6 +9,7 @@
     ~/.zshrc: zshrc
     ~/.zsh: zsh
     ~/pure.zsh: pure.zsh
+    ~/.tmuxinator: tmuxinator/
 
 - shell:
   - git update-submodules
