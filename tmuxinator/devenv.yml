@@ -1,0 +1,55 @@
+# ~/.tmuxinator/devenv.yml
+
+name: devenv
+root: ~/
+
+# Optional tmux socket
+# socket_name: foo
+
+# Runs before everything. Use it to start daemons etc.
+# pre: sudo /etc/rc.d/mysqld start
+pre: pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: rbenv shell 2.0.0-p247
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+# Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
+# tmux_command: byobu
+
+windows:
+  - editor:
+      layout: even-horizontal
+      panes:
+        - cd ~/Ludinc/
+        - cd ~/Ludinc/
+  - teacher:
+      layout: main-vertical
+      panes:
+        - cd ~/Ludinc/professor_s && git s
+        - cd ~/Ludinc/professor_s && rails s -p 4000
+        - cd ~/Ludinc/professor_s
+  - pupil:
+      layout: main-vertical
+      panes:
+        - cd ~/Ludinc/professor_s_pupils && git s
+        - cd ~/Ludinc/professor_s_pupils
+        - cd ~/Ludinc/professor_s_pupils
+  - parent:
+      layout: main-vertical
+      panes:
+        - cd ~/Ludinc/professor-s-parent && git s
+        - cd ~/Ludinc/professor-s-parent && rails s -p 8000
+        - cd ~/Ludinc/professor-s-parent
+  - msgServer:
+      layout: main-vertical
+      panes:
+        - cd ~/Ludinc/professor-s-messaging && git s
+        - cd ~/Ludinc/professor-s-messaging && rails s -p 5000
+        - cd ~/Ludinc/professor-s-messaging && mongod
+  - services:
+      layout: even-horizontal
+      panes:
+        - cd ~/Ludinc/professor-s-subscriptions && git s
+        - cd ~/Ludinc/professor-s-invoices && git s
