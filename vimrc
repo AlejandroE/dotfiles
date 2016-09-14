@@ -1,6 +1,11 @@
-set rtp+=$HOME/.vim/bundle/vundle
-call vundle#rc()
-Bundle 'gmarik/vundle'
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+"set rtp+=$HOME/.vim/bundle/vundle
+"call vundle#rc()
+"Bundle 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
+
 filetype plugin indent on
 
 " ALL OF THE ABOVE IS ALSO REQUIRED
@@ -24,6 +29,22 @@ Plugin 'mattn/emmet-vim'
 Plugin 'git@github.com:tpope/vim-rails.git'
 
 Plugin 'ervandew/supertab'
+
+" vim-react-snippets:
+Bundle "justinj/vim-react-snippets"
+
+" Ultisnips
+Bundle "SirVer/ultisnips"
+
+" Other sets of snippets (optional):
+Bundle "honza/vim-snippets"
+
+" JSX syntax
+Bundle 'mxw/vim-jsx'
+
+
+call vundle#end()            " required
+filetype plugin indent on    " required
 
 set t_Co=256
 syntax enable
