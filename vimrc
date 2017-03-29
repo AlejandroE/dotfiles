@@ -1,9 +1,13 @@
+" set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-"set rtp+=$HOME/.vim/bundle/vundle
-"call vundle#rc()
-"Bundle 'gmarik/vundle'
+
+" set rtp+=$HOME/.vim/bundle/vundle
+" call vundle#rc()
+" Bundle 'gmarik/vundle'
+
+" let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
 filetype plugin indent on
@@ -42,17 +46,27 @@ Bundle "honza/vim-snippets"
 " JSX syntax
 Bundle 'mxw/vim-jsx'
 
+" javascript and libs highlighting
+Bundle 'pangloss/vim-javascript'
+Plugin 'crusoexia/vim-javascript-lib'
+
+"cmd+d
+Plugin 'terryma/vim-multiple-cursors'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 set t_Co=256
-syntax enable
+"syntax enable
+syntax on
 au BufNewFile,BufRead *.js.coffee set filetype=coffee
 set background=dark
-let g:solarized_termtrans = 1
-let g:solarized_termcolors=256
-colorscheme solarized
+"let g:solarized_termtrans = 1
+"let g:solarized_termcolors=256
+colorscheme monokai
+set t_Co=256
+set conceallevel=1
+
 set number
 
 "set background=dark
@@ -95,4 +109,9 @@ set noerrorbells
 set novisualbell
 set t_vb=
 set tm=500
+
+"Font conf
+"set macligatures
+"set guifont=Fira\ Code:h12
+
 
