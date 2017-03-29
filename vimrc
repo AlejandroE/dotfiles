@@ -53,6 +53,9 @@ Plugin 'crusoexia/vim-javascript-lib'
 "cmd+d
 Plugin 'terryma/vim-multiple-cursors'
 
+"Nord Colour Scheme
+Plugin 'arcticicestudio/nord-vim'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -60,10 +63,13 @@ set t_Co=256
 "syntax enable
 syntax on
 au BufNewFile,BufRead *.js.coffee set filetype=coffee
-set background=dark
+
+"set background=dark
 "let g:solarized_termtrans = 1
 "let g:solarized_termcolors=256
-colorscheme monokai
+"colorscheme monokai
+colorscheme nord
+
 set t_Co=256
 set conceallevel=1
 
