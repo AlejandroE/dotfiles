@@ -33,9 +33,15 @@ windows:
       panes:
         - cd ~/babbel/content-explorer.cat.spa && git s
         - cd ~/babbel/content-explorer.cat.spa && npm start
-        - cd ~/babbel/content-explorer.cat.spa && npm run-script test-watch -- --reporters mocha 
-  - editor:
+        - cd ~/babbel/content-explorer.cat.spa && npm run-script test-watch -- --reporters mocha
+  - Editor:
       layout: even-horizontal
       panes:
         - cd ~/
         - cd ~/
+  - Learning:
+      layout: main-main-vertical
+      panes:
+        - cd ~/babbel/learning.gem 
+        - cd ~/babbel/learning.spa && mysqld stop && mysql.server start
+        - cd ~/babbel/ && redis-server --daemonize yes && redis-cli ping
