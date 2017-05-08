@@ -21,7 +21,7 @@ Bundle 'vim-scripts/The-NERD-tree'
 " Bundle 'altercation/vim-colors-solarized'
 Bundle 'tpope/vim-sensible'
 
-Plugin 'kchmck/vim-coffee-script'
+"Plugin 'kchmck/vim-coffee-script'
 Plugin 'bling/vim-airline'
 
 Plugin 'tpope/vim-fugitive'
@@ -44,23 +44,30 @@ Bundle "SirVer/ultisnips"
 Bundle "honza/vim-snippets"
 
 " JSX syntax
-Bundle 'mxw/vim-jsx'
+"Bundle 'mxw/vim-jsx'
 
 " javascript and libs highlighting
-Bundle 'pangloss/vim-javascript'
-Plugin 'crusoexia/vim-javascript-lib'
+"Bundle 'pangloss/vim-javascript'
+"Plugin 'crusoexia/vim-javascript-lib'
+Plugin 'othree/yajs.vim'
 
 "cmd+d
 Plugin 'terryma/vim-multiple-cursors'
 
 "Nord Colour Scheme
-Plugin 'arcticicestudio/nord-vim'
+"Plugin 'arcticicestudio/nord-vim'
+
+"Oceanic NExt colour scheme
+Plugin 'mhartington/oceanic-next'
+
+"eslint
+Plugin 'vim-syntastic/syntastic.git'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-set t_Co=256
-"syntax enable
+"set t_Co=256
+syntax enable
 syntax on
 au BufNewFile,BufRead *.js.coffee set filetype=coffee
 
@@ -68,9 +75,16 @@ au BufNewFile,BufRead *.js.coffee set filetype=coffee
 "let g:solarized_termtrans = 1
 "let g:solarized_termcolors=256
 "colorscheme monokai
-colorscheme nord
+"colorscheme nord
 
-set t_Co=256
+if (has("termguicolors"))
+  set termguicolors
+endif
+colorscheme OceanicNext
+
+let g:airline_theme='oceanicnext'
+
+"set t_Co=256
 set conceallevel=1
 
 set number
@@ -98,7 +112,7 @@ set autoread
 
 "Ignore case when searching
 set ignorecase
-"When searching try to be smart about cases 
+"When searching try to be smart about cases
 set smartcase
 "Highlight search results
 set hlsearch
@@ -120,4 +134,36 @@ set tm=500
 "set macligatures
 "set guifont=Fira\ Code:h12
 
+"tmux colors fix
+set t_8f=[38;2;%lu;%lu;%lum
+set t_8b=[48;2;%lu;%lu;%lum
+
+"no swap files, lets rely on git
+set noswapfile
+
+"delete trailling space on save
+function! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+
+autocmd BufWritePre *.js,*.css,*.html :call <SID>StripTrailingWhitespaces()
+
+"nerdtree cmd kb
+nnoremap <F4> :NERDTreeToggle<CR>
+
+" Configure syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_javascript_checkers = ['jscs']
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+let g:syntastic_error_symbol = "✗"
+let g:syntastic_warning_symbol = "⚠"
 
