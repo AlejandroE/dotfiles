@@ -29,19 +29,20 @@ root: ~/
 
 windows:
   - CAT:
-      layout: main-vertical
+      layout: 2657,238x62,0,0{107x62,0,0,0,130x62,108,0[130x30,108,0,3,130x31,108,31,4]}
       panes:
         - cd ~/babbel/content-explorer.cat.spa && git s
         - cd ~/babbel/content-explorer.cat.spa && npm start
         - cd ~/babbel/content-explorer.cat.spa && npm run-script test-watch -- --reporters mocha
   - Editor:
-      layout: even-horizontal
+      layout: a618,238x62,0,0{106x62,0,0,1,131x62,107,0,5}
       panes:
         - cd ~/
         - cd ~/
   - Learning:
-      layout: main-main-vertical
+      layout: eb11,237x61,0,0[238x30,0,0{92x30,0,0,2,145x30,93,0,6},238x31,0,31{92x31,0,31,7,145x31,93,31,8}]        
       panes:
-        - cd ~/babbel/learning.gem 
-        - cd ~/babbel/learning.spa && mysqld stop && mysql.server start
+        - cd ~/babbel/lesson-player.spa && npm run build:development
+        - cd ~/babbel/learning-babbel && mysqld stop
         - cd ~/babbel/ && redis-server --daemonize yes && redis-cli ping
+        - cd ~/babbel
