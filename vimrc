@@ -197,4 +197,39 @@ set statusline+=%*
 
 " yank to osxs clipboard
 set clipboard=unnamed
+"don't check jsx ext
+"let g:jsx_ext_required = 0
+let g:vim_jsx_pretty_colorful_config = 0
+
+" filenames like *.xml, *.html, *.xhtml, ...
+" Then after you press <kbd>&gt;</kbd> in these files, this plugin will try to close the current tag.
+let g:closetag_filenames = '*.html,*.xhtml,*.js'
+
+" filenames like *.xml, *.xhtml, ...
+" This will make the list of non closing tags self closing in the specified files.
+let g:closetag_xhtml_filenames = '*.js,*.jsx'
+
+" integer value [0|1]
+" This will make the list of non closing tags case sensitive (e.g. `<Link>` will be closed while `<link>` won't.)
+let g:closetag_emptyTags_caseSensitive = 1
+
+" Shortcut for closing tags, default is '>'
+let g:closetag_shortcut = '>'
+
+" Add > at current position without closing the current tag, default is ''
+let g:closetag_close_shortcut = '<leader>>'
+
+let g:mta_filetypes = {
+    \ 'html' : 1,
+    \ 'javascript' : 1
+    \}
+
+" Ag
+let g:ackprg = 'ag --vimgrep'
+
+" Ale config 4 prettier (linter)
+let g:ale_fixers = {}
+let g:ale_fixers['javascript'] = ['eslint']
+let g:ale_fix_on_save = 1
+let g:ale_javascript_prettier_use_local_config = 1
 
