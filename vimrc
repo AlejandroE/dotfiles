@@ -2,7 +2,6 @@
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-
 " set rtp+=$HOME/.vim/bundle/vundle
 " call vundle#rc()
 " Bundle 'gmarik/vundle'
@@ -16,7 +15,7 @@ filetype plugin indent on
 " FOR SUCCESSFUL VUNDLE INSTALL
 " THE FOLLOWING IS NEW FOR US…
 
-Bundle 'kien/ctrlp.vim'
+" Bundle 'kien/ctrlp.vim'
 Bundle 'vim-scripts/The-NERD-tree'
 " Bundle 'altercation/vim-colors-solarized'
 Bundle 'tpope/vim-sensible'
@@ -30,7 +29,10 @@ Plugin 'git@github.com:hail2u/vim-css3-syntax.git'
 Plugin 'othree/html5.vim'
 Plugin 'mattn/emmet-vim'
 
-Plugin 'git@github.com:tpope/vim-rails.git'
+" ack
+Plugin 'mileszs/ack.vim'
+
+"Plugin 'git@github.com:tpope/vim-rails.git'
 
 Plugin 'ervandew/supertab'
 
@@ -43,13 +45,34 @@ Bundle "SirVer/ultisnips"
 " Other sets of snippets (optional):
 Bundle "honza/vim-snippets"
 
-" JSX syntax
-"Bundle 'mxw/vim-jsx'
+" Automatically close HTML/XML tags.
+Plugin 'alvan/vim-closetag'
+
+" Highlight enclosing HTML/XML tags.
+Plugin 'valloric/MatchTagAlways'
+
+" jsx syntax
+"Plugin 'Quramy/vim-js-pretty-template'
 
 " javascript and libs highlighting
 "Bundle 'pangloss/vim-javascript'
 "Plugin 'crusoexia/vim-javascript-lib'
-Plugin 'othree/yajs.vim'
+"Plugin 'othree/yajs.vim'
+"Plugin 'maxmellon/vim-jsx-pretty'
+
+" JSX syntax
+"Bundle 'mxw/vim-jsx'
+Plugin 'chemzqm/vim-jsx-improve'
+
+" fzf
+"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+"Plug 'junegunn/fzf.vim'
+
+" jsbeautify, autoformat
+" Plugin 'maksimr/vim-jsbeautify'
+
+" linter
+Plugin 'w0rp/ale'
 
 "cmd+d
 Plugin 'terryma/vim-multiple-cursors'
@@ -61,10 +84,13 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'mhartington/oceanic-next'
 
 "eslint
-Plugin 'vim-syntastic/syntastic.git'
+"Plugin 'vim-syntastic/syntastic.git'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+" fuzzy finder
+set rtp+=/usr/local/opt/fzf
 
 "set t_Co=256
 syntax enable
@@ -88,6 +114,8 @@ let g:airline_theme='oceanicnext'
 set conceallevel=1
 
 set number
+
+let mapleader = ','
 
 "set background=dark
 "color solarized
