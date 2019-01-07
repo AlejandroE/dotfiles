@@ -65,8 +65,8 @@ Plugin 'valloric/MatchTagAlways'
 Plugin 'chemzqm/vim-jsx-improve'
 
 " fzf
-"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-"Plug 'junegunn/fzf.vim'
+" Plugin '/usr/local/opt/fzf'
+Plugin 'junegunn/fzf.vim'
 
 " jsbeautify, autoformat
 " Plugin 'maksimr/vim-jsbeautify'
@@ -180,7 +180,8 @@ endfun
 autocmd BufWritePre *.js,*.css,*.html :call <SID>StripTrailingWhitespaces()
 
 "nerdtree cmd kb
-nnoremap <F4> :NERDTreeToggle<CR>
+"nnoremap <F4> :NERDTreeToggle<CR>
+nmap <leader>ne :NERDTreeToggle<cr>
 
 " Configure syntastic
 set statusline+=%#warningmsg#
@@ -233,6 +234,14 @@ let g:ale_fixers['javascript'] = ['eslint']
 let g:ale_fix_on_save = 1
 let g:ale_javascript_prettier_use_local_config = 1
 
+" FZF (replaces Ctrl-P, FuzzyFinder and Command-T)
+set rtp+=/usr/local/opt/fzf
+set rtp+=~/.fzf
+nmap ; :Buffers<CR>
+nmap <Leader>r :Tags<CR>
+nmap <Leader>t :Files<CR>
+nmap <Leader>a :Find<CR>
+
 " --column: Show column number
 " --line-number: Show line number
 " --no-heading: Do not show file headings in results
@@ -243,4 +252,5 @@ let g:ale_javascript_prettier_use_local_config = 1
 " --follow: Follow symlinks
 " --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 " --color: Search color options
-command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+

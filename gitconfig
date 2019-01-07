@@ -1,5 +1,5 @@
 [user]
-	name = Alejandro E
+	name = Alejandro Etchandía
 	email = alejandro@plasticbliss.com
 [push]
 	default = simple
@@ -17,6 +17,7 @@
     lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
     lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
     lg = !"git lg1"
-	cf = !sh -c \"git diff --name-only | uniq | xargs subl\"
+    cf = !sh -c \"git diff --name-only | uniq | xargs subl\"
+    
 [core]
 	excludesfile = /Users/aechandia/.gitignore
