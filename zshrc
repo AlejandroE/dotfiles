@@ -1,13 +1,13 @@
-#export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-#export PATH=$PATH:~/bin
-#. ~/pure.zsh
-#[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+#Babbel dev tools and completions
+export PATH="$HOME/babbel/development.cli/bin:$PATH"
+source "$HOME/babbel/development.cli/completions/babbel.zsh"
 
 #rbenv stuff
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
 #Updated Pure zsh
+fpath+=("$HOME/dotfiles/pure")
 autoload -U promptinit; promptinit
 
 # optionally define some pure options
@@ -27,6 +27,10 @@ setopt HIST_EXPIRE_DUPS_FIRST  # allow dups, but expire old ones when I hit HIST
 
 fpath=(/usr/local/share/zsh-completions $fpath)
 
+alias vim="nvim"
+alias vi="nvim"
+alias oldvim="\vim"
+
 #alias postgres
 alias -g pg-start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 
@@ -39,6 +43,9 @@ alias -g ls='ls -G'
 alias canary='/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/./Google\ Chrome\ Canary --unsafely-treat-insecure-origin-as-secure="http://my.babbel.dev/" --user-data-dir=/Users/aechandia/canary/Library/Application\ Support/Google/Chrome/Default'
 
 #alias bclean = "!f() { git branch --merged ${1-master} | grep -vE '(master|production)' | xargs git branch -d; }; f"
+
+alias -g namerelease= curl -s 'http://165.227.17.126/api/random' | awk -F\" '{gsub ("[: ]", "-"); print "release-"$4}'
+alias -g fixpure='prompt_pure_async_init=0; async_stop_worker prompt_pure'
 
 autoload -U compinit && compinit
 zmodload -i zsh/complist
@@ -58,7 +65,7 @@ unsetopt list_beep              # no bell on ambiguous completion
 
 # eval "$(docker-machine env default)"
 export LC_ALL="de_de.utf-8"
-export EDITOR='vim'
+export EDITOR='nvim'
 
 # FZF
 # --files: List files that would be searched but do not search
@@ -80,6 +87,7 @@ export LANG=en_US.UTF-8
 [[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
 
 export PATH="$HOME/.yarn/bin:$PATH"
+
 # include Z
 . ~/dotfiles/z/z.sh
 
@@ -87,3 +95,7 @@ alias -g lyrics='f() { curl -s --get "https://makeitpersonal.co/lyrics" --data-u
 
 # Load env variables
 source ~/.zsh_env_vars
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
