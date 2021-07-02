@@ -17,11 +17,11 @@ filetype plugin indent on
 
 " Bundle 'kien/ctrlp.vim'
 Bundle 'vim-scripts/The-NERD-tree'
-" Bundle 'altercation/vim-colors-solarized'
 Bundle 'tpope/vim-sensible'
 
-"Plugin 'kchmck/vim-coffee-script'
-Plugin 'bling/vim-airline'
+" Plugin 'kchmck/vim-coffee-script'
+"Plugin 'bling/vim-airline'
+Plugin 'itchyny/lightline.vim'
 
 Plugin 'tpope/vim-fugitive'
 
@@ -32,15 +32,13 @@ Plugin 'mattn/emmet-vim'
 " ack
 Plugin 'mileszs/ack.vim'
 
-"Plugin 'git@github.com:tpope/vim-rails.git'
-
 Plugin 'ervandew/supertab'
 
 " vim-react-snippets:
 Bundle "justinj/vim-react-snippets"
 
 " Ultisnips
-Bundle "SirVer/ultisnips"
+" Bundle "SirVer/ultisnips"
 
 " Other sets of snippets (optional):
 Bundle "honza/vim-snippets"
@@ -53,7 +51,9 @@ Plugin 'valloric/MatchTagAlways'
 
 " jsx syntax
 "Plugin 'Quramy/vim-js-pretty-template'
-
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'jelera/vim-javascript-syntax'
 " javascript and libs highlighting
 "Bundle 'pangloss/vim-javascript'
 "Plugin 'crusoexia/vim-javascript-lib'
@@ -62,7 +62,7 @@ Plugin 'valloric/MatchTagAlways'
 
 " JSX syntax
 "Bundle 'mxw/vim-jsx'
-Plugin 'chemzqm/vim-jsx-improve'
+"Plugin 'chemzqm/vim-jsx-improve'
 
 " fzf
 " Plugin '/usr/local/opt/fzf'
@@ -81,7 +81,11 @@ Plugin 'terryma/vim-multiple-cursors'
 "Plugin 'arcticicestudio/nord-vim'
 
 "Oceanic NExt colour scheme
-Plugin 'mhartington/oceanic-next'
+"Plugin 'mhartington/oceanic-next'
+
+"Plugin 'drewtempelmeyer/palenight.vim'
+
+Plugin 'connorholyday/vim-snazzy'
 
 "eslint
 "Plugin 'vim-syntastic/syntastic.git'
@@ -92,23 +96,18 @@ filetype plugin indent on    " required
 " fuzzy finder
 set rtp+=/usr/local/opt/fzf
 
-"set t_Co=256
+set t_Co=256
+
 syntax enable
-syntax on
+
 au BufNewFile,BufRead *.js.coffee set filetype=coffee
 
-"set background=dark
-"let g:solarized_termtrans = 1
-"let g:solarized_termcolors=256
-"colorscheme monokai
-"colorscheme nord
+syntax on
+"let g:oceanic_next_terminal_bold = 1
+"let g:oceanic_next_terminal_italic = 1
+"colorscheme OceanicNext
 
-if (has("termguicolors"))
-  set termguicolors
-endif
-colorscheme OceanicNext
-
-let g:airline_theme='oceanicnext'
+" let g:airline_theme='oceanicnext'
 
 "set t_Co=256
 set conceallevel=1
@@ -118,10 +117,28 @@ set number
 let mapleader = ','
 
 "set background=dark
+"colorscheme palenight
+"let g:lightline.colorscheme = 'palenight'
+
+" set Vim-specific sequences for RGB colors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
+let g:SnazzyTransparent = 1
+let g:lightline = {'colorscheme': 'snazzy'}
+colorscheme snazzy
+
+if (has("termguicolors"))
+  set termguicolors
+endif
+
 "color solarized
 
 "allows to delete text present before opening a file
 set backspace=indent,eol,start
+
+"swap buffers without saving first
+set hidden
 
 "smart word wrap
 set breakindent
@@ -163,8 +180,8 @@ set tm=500
 "set guifont=Fira\ Code:h12
 
 "tmux colors fix
-set t_8f=[38;2;%lu;%lu;%lum
-set t_8b=[48;2;%lu;%lu;%lum
+"set t_8f=[38;2;%lu;%lu;%lum
+"set t_8b=[48;2;%lu;%lu;%lum
 
 "no swap files, lets rely on git
 set noswapfile
@@ -179,9 +196,9 @@ endfun
 
 autocmd BufWritePre *.js,*.css,*.html :call <SID>StripTrailingWhitespaces()
 
-"nerdtree cmd kb
-"nnoremap <F4> :NERDTreeToggle<CR>
-nmap <leader>ne :NERDTreeToggle<cr>
+" fix styled components highlighting wuen mixed with jsx
+" https://github.com/styled-components/vim-styled-components/issues/64
+autocmd BufEnter *.{js,ts,jsx,tsx} :syntax sync fromstart
 
 " Configure syntastic
 set statusline+=%#warningmsg#
@@ -230,7 +247,7 @@ let g:ackprg = 'ag --vimgrep'
 
 " Ale config 4 prettier (linter)
 let g:ale_fixers = {}
-let g:ale_fixers['javascript'] = ['eslint']
+let g:ale_fixers = ['prettier', 'eslint']
 let g:ale_fix_on_save = 1
 let g:ale_javascript_prettier_use_local_config = 1
 
