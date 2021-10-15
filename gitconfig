@@ -1,6 +1,7 @@
 [user]
-	name = Alejandro Etchandía
-	email = alejandro@plasticbliss.com
+	name = Alejandro Echandia
+	email = alejandro.echandia@shopify.com
+	signingkey = 2C8D52D5312A8124DDAA20FFA8617DCD7114A62E
 [push]
 	default = simple
 [alias]
@@ -21,3 +22,27 @@
     
 [core]
 	excludesfile = /Users/aechandia/.gitignore
+	commitGraph = true
+[credential]
+	helper = 
+	helper = store --file /opt/dev/var/private/git_credential_store
+[diff]
+	algorithm = patience
+[gc]
+	writeCommitGraph = true
+[protocol]
+	version = 2
+[url "https://github.com/Shopify/"]
+	insteadOf = git@github.com:Shopify/
+	insteadOf = git@github.com:shopify/
+	insteadOf = ssh://git@github.com/Shopify/
+	insteadOf = ssh://git@github.com/shopify/
+[gpg]
+	program = /nix/var/nix/gcroots/dev-profiles/dev-support-dev-profile/bin/gpg-auto-pin
+[commit]
+	gpgSign = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

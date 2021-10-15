@@ -79,6 +79,10 @@ inoremap <leader>s <C-c>:w<cr>
 " quit faster
 noremap <leader>q :q<cr>
 
+" move lines and reindent
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
 " yank to osxs clipboard
 set clipboard=unnamed
 
@@ -112,6 +116,7 @@ let g:NERDSpaceDelims = 1
 let g:ale_fixers = {
 \    'javascript': ['eslint'],
 \    'typescript': ['prettier'],
+\    'typescriptreact': ['prettier'],
 \    'scss': ['prettier'],
 \    'html': ['prettier']
 \}

@@ -1,4 +1,5 @@
 call plug#begin()
+"Plug 'neovim/nvim-lspconfig'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-sensible'
@@ -19,13 +20,15 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'hashivim/vim-terraform'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'leafgarland/typescript-vim'
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+" Plug 'HerringtonDarkholme/yats.vim'
+" Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 Plug 'skbolton/embark'
 " Plug 'kaicataldo/material.vim'
 " Plug 'dracula/vim', { 'as': 'dracula' }
 
 "platformio
 Plug 'coddingtonbear/neomake-platformio'
-
+"webgl
+Plug 'tikhomirov/vim-glsl'
+Plug 'jparise/vim-graphql'
 call plug#end()

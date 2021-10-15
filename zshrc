@@ -1,15 +1,5 @@
-#Babbel dev tools and completions
-export PATH="$HOME/babbel/development.cli/bin:$PATH"
-source "$HOME/babbel/development.cli/completions/babbel.zsh"
-
-#rbenv stuff
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
 #Updated Pure zsh
-fpath+=("$HOME/dotfiles/pure")
 autoload -U promptinit; promptinit
-
 # optionally define some pure options
 PURE_PROMPT_SYMBOL=🍕
 #PURE_GIT_DOWN_ARROW=🔻
@@ -75,12 +65,6 @@ export EDITOR='nvim'
 # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 
-#nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
@@ -94,8 +78,17 @@ export PATH="$HOME/.yarn/bin:$PATH"
 alias -g lyrics='f() { curl -s --get "https://makeitpersonal.co/lyrics" --data-urlencode "artist=$1" --data-urlencode "title=$2" };f'
 
 # Load env variables
-source ~/.zsh_env_vars
+# source ~/.zsh_env_vars
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+[ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
+if [ -e /Users/alejandroe/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/alejandroe/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+[[ -f /opt/dev/sh/chruby/chruby.sh ]] && type chruby >/dev/null 2>&1 || chruby () { source /opt/dev/sh/chruby/chruby.sh; chruby "$@"; }
