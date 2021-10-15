@@ -1,15 +1,5 @@
-#export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-#export PATH=$PATH:~/bin
-#. ~/pure.zsh
-#[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-
-#rbenv stuff
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
 #Updated Pure zsh
 autoload -U promptinit; promptinit
-
 # optionally define some pure options
 PURE_PROMPT_SYMBOL=🍕
 #PURE_GIT_DOWN_ARROW=🔻
@@ -27,6 +17,10 @@ setopt HIST_EXPIRE_DUPS_FIRST  # allow dups, but expire old ones when I hit HIST
 
 fpath=(/usr/local/share/zsh-completions $fpath)
 
+alias vim="nvim"
+alias vi="nvim"
+alias oldvim="\vim"
+
 #alias postgres
 alias -g pg-start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 
@@ -39,6 +33,9 @@ alias -g ls='ls -G'
 alias canary='/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/./Google\ Chrome\ Canary --unsafely-treat-insecure-origin-as-secure="http://my.babbel.dev/" --user-data-dir=/Users/aechandia/canary/Library/Application\ Support/Google/Chrome/Default'
 
 #alias bclean = "!f() { git branch --merged ${1-master} | grep -vE '(master|production)' | xargs git branch -d; }; f"
+
+alias -g namerelease= curl -s 'http://165.227.17.126/api/random' | awk -F\" '{gsub ("[: ]", "-"); print "release-"$4}'
+alias -g fixpure='prompt_pure_async_init=0; async_stop_worker prompt_pure'
 
 autoload -U compinit && compinit
 zmodload -i zsh/complist
@@ -58,7 +55,7 @@ unsetopt list_beep              # no bell on ambiguous completion
 
 # eval "$(docker-machine env default)"
 export LC_ALL="de_de.utf-8"
-export EDITOR='vim'
+export EDITOR='nvim'
 
 # FZF
 # --files: List files that would be searched but do not search
@@ -68,22 +65,30 @@ export EDITOR='vim'
 # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 
-#nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 [[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
 
 export PATH="$HOME/.yarn/bin:$PATH"
+
 # include Z
 . ~/dotfiles/z/z.sh
 
 alias -g lyrics='f() { curl -s --get "https://makeitpersonal.co/lyrics" --data-urlencode "artist=$1" --data-urlencode "title=$2" };f'
 
 # Load env variables
-source ~/.zsh_env_vars
+# source ~/.zsh_env_vars
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+[ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
+if [ -e /Users/alejandroe/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/alejandroe/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+[[ -f /opt/dev/sh/chruby/chruby.sh ]] && type chruby >/dev/null 2>&1 || chruby () { source /opt/dev/sh/chruby/chruby.sh; chruby "$@"; }

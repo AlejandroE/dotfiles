@@ -10,7 +10,7 @@
     ~/.zsh: zsh
     ~/pure.zsh: pure.zsh
     ~/.tmuxinator: tmuxinator/
+    ~/.config/nvim: nvim/
 
 - shell:
-  - git update-submodules
-  - Installing/updating submodules
+    - [git submodule update --init --recursive, Installing submodules]
