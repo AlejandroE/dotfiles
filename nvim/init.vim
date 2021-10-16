@@ -72,6 +72,20 @@ set tm=500
 set ruler
 set number relativenumber
 
+" beahve like other caps
+nnoremap Y y$
+
+"keep it centred 
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ'z
+
+" control udo sequence
+inoremap , ,<c-g>u
+inoremap . .<c-g>u
+inoremap ! !<c-g>u
+inoremap ? ?<c-g>u
+
 " save faster
 nnoremap <leader>s :w<cr>
 inoremap <leader>s <C-c>:w<cr>
