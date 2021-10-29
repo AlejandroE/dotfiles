@@ -2,6 +2,98 @@
 
 set -e
 
+homebrew_packages="$(cat brew_pkgs | xargs)"
+apt_packages="$(cat apt_pkgs | xargs)"
+os="$(uname -s | tr -d '\n')"
+
+is_installed () {
+  # This works with scripts and programs. For more info, check
+  # http://goo.gl/B9683D
+  type $1 &> /dev/null 2>&1
+}
+
+is_brew_installed () {
+  brew --prefix "$1" &> /dev/null
+}
+
+installed=""
+is_apt_installed() {
+  [[ -z $installed ]] && installed="$(apt list --installed)"
+  echo $installed | grep -q "$1"
+}
+
+install_homebrew () {
+  if ! is_installed brew; then
+    step "Installing Homebrew"
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  fi
+}
+
+install_homebrew_packages () {
+  step "Installing missing packages: $homebrew_packages"
+  for package in $homebrew_packages; do
+    if ! is_brew_installed $package; then
+      echo "Installing $package"
+      brew install $package
+    fi
+  done
+}
+
+install_apt_packages () {
+  step "Installing missing packages: $apt_packages"
+  for package in $apt_packages; do
+    if ! is_apt_installed $package; then
+      echo "Installing $package"
+      sudo apt-get install -y $package
+    fi
+  done
+}
+
+install_nvim_dependencies() {
+  if ! ls -A "$HOME/.config/nvim/plugged" &> /dev/null; then
+    step "Installing nvim dependencies"
+    echo 'PlugInstall | qa!' | nvim -n -u $HOME/dotfiles/nvim/config/plugins.vim -es
+    nvim -c 'CocInstall -sync coc-json coc-tsserver coc-solargraph coc-snippets coc-emoji | qa!'
+  fi
+}
+
+step() {
+  cat <<-EOF 1>&2
+	==============================
+	$1
+	------------------------------
+	EOF
+}
+
+main () {
+  local dot_files="${@:-.*}"
+  local current_dir
+  current_dir="$(pwd)"
+
+  if [[ $# -eq 0 ]]; then
+    if [[ $os = "Darwin" ]]; then
+      install_homebrew
+      install_homebrew_packages
+    fi
+
+    if [[ $SPIN ]]; then
+      install_apt_packages
+      rsync -av "$HOME/.config/" "$current_dir/config/"
+      rm -rf $HOME/.config
+      rm $HOME/.zshrc
+      rm $HOME/.gitconfig
+    fi
+  fi
+
+  if [[ $SPIN ]]; then
+    step "spin git config"
+    git config --global user.email "alejandro.echandia@shopify.com"
+    git config --global user.name "AlejandroE"
+    git config --global --unset-all credential.helper
+  fi
+
+}
+
 CONFIG="install.conf.yaml"
 DOTBOT_DIR="dotbot"
 
@@ -12,3 +104,6 @@ cd "${BASEDIR}"
 git submodule update --init --recursive "${DOTBOT_DIR}"
 
 "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" $@
+
+install_nvim_dependencies
+
