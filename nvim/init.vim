@@ -9,6 +9,11 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
 " let g:SnazzyTransparent = 1
 " let g:lightline = {'colorscheme': 'snazzy'}
 " colorscheme snazzy
