@@ -66,6 +66,7 @@ step() {
 }
 
 install_pure_prompt () {
+  step "Installing pure"
   mkdir -p "$HOME/.zsh"
   git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
 }
@@ -95,8 +96,9 @@ main () {
     # git config --global user.name "AlejandroE"
     # git config --global --unset-all credential.helper
   # fi
-  install_pure_prompt
 }
+
+main "$@"
 
 CONFIG="install.conf.yaml"
 DOTBOT_DIR="dotbot"
@@ -109,5 +111,6 @@ git submodule update --init --recursive "${DOTBOT_DIR}"
 
 "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" $@
 
+install_pure_prompt
 install_nvim_dependencies
 
