@@ -65,6 +65,11 @@ step() {
 	EOF
 }
 
+install_pure_prompt () {
+  mkdir -p "$HOME/.zsh"
+  git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
+}
+
 main () {
   local dot_files="${@:-.*}"
   local current_dir
@@ -78,20 +83,19 @@ main () {
 
     if [[ $SPIN ]]; then
       install_apt_packages
-      rsync -av "$HOME/.config/" "$current_dir/config/"
       rm -rf $HOME/.config
-      rm $HOME/.zshrc
-      rm $HOME/.gitconfig
+      rm -f $HOME/.zshrc
+      rm -f $HOME/.gitconfig
     fi
   fi
 
-  if [[ $SPIN ]]; then
-    step "spin git config"
-    git config --global user.email "alejandro.echandia@shopify.com"
-    git config --global user.name "AlejandroE"
-    git config --global --unset-all credential.helper
-  fi
-
+  # if [[ $SPIN ]]; then
+    # step "spin git config"
+    # git config --global user.email "alejandro.echandia@shopify.com"
+    # git config --global user.name "AlejandroE"
+    # git config --global --unset-all credential.helper
+  # fi
+  install_pure_prompt
 }
 
 CONFIG="install.conf.yaml"

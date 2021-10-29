@@ -8,7 +8,6 @@
     ~/.gitconfig: gitconfig
     ~/.zshrc: zshrc
     ~/.zsh: zsh
-    ~/pure.zsh: pure.zsh
     ~/.tmuxinator: tmuxinator/
     ~/.config/nvim: nvim/
 
