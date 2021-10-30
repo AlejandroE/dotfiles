@@ -87,6 +87,7 @@ main () {
       rm -rf $HOME/.config
       rm -f $HOME/.zshrc
       rm -f $HOME/.gitconfig
+      mkdir $HOME/.config
     fi
   fi
 
