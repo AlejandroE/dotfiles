@@ -113,5 +113,5 @@ git submodule update --init --recursive "${DOTBOT_DIR}"
 "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" $@
 
 install_pure_prompt
-install_nvim_dependencies
+# install_nvim_dependencies
 
