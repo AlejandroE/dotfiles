@@ -12,6 +12,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
 "Plug 'jelera/vim-javascript-syntax'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'w0rp/ale'
 " Plug 'terryma/vim-multiple-cursors'
 Plug 'connorholyday/vim-snazzy'
