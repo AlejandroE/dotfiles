@@ -1,4 +1,5 @@
 #Updated Pure zsh
+fpath+=$HOME/.zsh/pure
 autoload -U promptinit; promptinit
 # optionally define some pure options
 PURE_PROMPT_SYMBOL=🍕
@@ -82,9 +83,7 @@ alias -g lyrics='f() { curl -s --get "https://makeitpersonal.co/lyrics" --data-u
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-. /usr/local/opt/asdf/libexec/asdf.sh
+# . /usr/local/opt/asdf/libexec/asdf.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -94,3 +93,4 @@ if [ -e /Users/alejandroe/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/ale
 [[ -f /opt/dev/sh/chruby/chruby.sh ]] && type chruby >/dev/null 2>&1 || chruby () { source /opt/dev/sh/chruby/chruby.sh; chruby "$@"; }
 
 [[ -x /usr/local/bin/brew ]] && eval $(/usr/local/bin/brew shellenv)
+source $HOME/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
