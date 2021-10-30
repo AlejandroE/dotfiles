@@ -52,8 +52,10 @@ install_apt_packages () {
 install_nvim_dependencies() {
   if ! ls -A "$HOME/.config/nvim/plugged" &> /dev/null; then
     step "Installing nvim dependencies"
-    echo 'PlugInstall | qa!' | nvim -n -u $HOME/dotfiles/nvim/config/plugins.vim -es
-    nvim -c 'CocInstall -sync coc-json coc-tsserver coc-solargraph coc-snippets coc-emoji | qa!'
+
+    sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    nvim --headless +PlugInstall +qall
   fi
 }
 
@@ -113,5 +115,5 @@ git submodule update --init --recursive "${DOTBOT_DIR}"
 "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" $@
 
 install_pure_prompt
-# install_nvim_dependencies
+install_nvim_dependencies
 

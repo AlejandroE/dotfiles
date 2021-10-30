@@ -1,14 +1,3 @@
-" Install vim-plug if not found
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-endif
-
-" Run PlugInstall if there are missing plugins
-autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \| PlugInstall --sync | source $MYVIMRC
-\| endif
-
 call plug#begin()
 
 "Plug 'neovim/nvim-lspconfig'
@@ -22,7 +11,7 @@ Plug 'pangloss/vim-javascript'
 "Plug 'chemzqm/vim-jsx-improve'
 Plug 'maxmellon/vim-jsx-pretty'
 "Plug 'jelera/vim-javascript-syntax'
-Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'w0rp/ale'
 " Plug 'terryma/vim-multiple-cursors'
 Plug 'connorholyday/vim-snazzy'
