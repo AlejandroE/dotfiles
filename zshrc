@@ -12,8 +12,8 @@ prompt pure
 ## History
 HISTFILE=$HOME/.zhistory       # enable history saving on shell exit
 setopt APPEND_HISTORY          # append rather than overwrite history file.
-HISTSIZE=1200                  # lines of history to maintain memory
-SAVEHIST=1000                  # lines of history to maintain in history file.
+HISTSIZE=50000                  # lines of history to maintain memory
+SAVEHIST=50000                  # lines of history to maintain in history file.
 setopt HIST_EXPIRE_DUPS_FIRST  # allow dups, but expire old ones when I hit HISTSIZE
 
 fpath=(/usr/local/share/zsh-completions $fpath)
@@ -57,6 +57,31 @@ unsetopt list_beep              # no bell on ambiguous completion
 # eval "$(docker-machine env default)"
 export LC_ALL="de_de.utf-8"
 export EDITOR='nvim'
+
+# Start Spin specific
+
+#`alias -=popd`, but the -- is needed just to make `alias` parse it correctly
+alias -- -='popd'
+
+alias journalctl="/usr/bin/journalctl --no-hostname"
+alias sc=systemctl
+alias jc=journalctl
+
+# Simplifies tailing multiple services simultaneously
+# `jctail a b c` is the same as running
+# `journalctl --quiet --follow __SYSTEMD_UNIT=a + _SYSTEMD_UNIT=b + _SYSTEMD_UNIT=c`
+jctail() {
+    local services=""
+    for service in "$@"; do
+        if [ -n "${services}" ]; then
+            services="${services} +"
+        fi
+        services="${services} _SYSTEMD_UNIT=${service}"
+    done
+
+    journalctl --quiet --follow ${=services}
+}
+# End Spin specific
 
 # FZF
 # --files: List files that would be searched but do not search
