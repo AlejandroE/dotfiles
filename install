@@ -85,6 +85,11 @@ main () {
     fi
 
     if [[ $SPIN ]]; then
+      # add neovim 6 apt-repo
+      sudo apt purge neovim
+      sudo add-apt-repository -y ppa:neovim-ppa/unstable
+      sudo apt update
+
       install_apt_packages
       rm -rf $HOME/.config
       rm -f $HOME/.zshrc
@@ -92,13 +97,6 @@ main () {
       mkdir $HOME/.config
     fi
   fi
-
-  # if [[ $SPIN ]]; then
-    # step "spin git config"
-    # git config --global user.email "alejandro.echandia@shopify.com"
-    # git config --global user.name "AlejandroE"
-    # git config --global --unset-all credential.helper
-  # fi
 }
 
 main "$@"

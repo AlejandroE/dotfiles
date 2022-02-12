@@ -15,8 +15,6 @@ Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 
-"Plug 'rafamadriz/friendly-snippets'
-
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'folke/trouble.nvim'
 
@@ -45,18 +43,15 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 "Plug 'w0rp/ale'
 " Plug 'terryma/vim-multiple-cursors'
-Plug 'connorholyday/vim-snazzy'
+" Plug 'connorholyday/vim-snazzy'
 " Plug 'ervandew/supertab'
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'scrooloose/nerdcommenter'
 Plug 'hashivim/vim-terraform'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 " Plug 'leafgarland/typescript-vim'
 " Plug 'HerringtonDarkholme/yats.vim'
 " Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
-Plug 'embark-theme/vim', { 'as': 'embark', 'branch': 'main' }
-" Plug 'kaicataldo/material.vim'
-" Plug 'dracula/vim', { 'as': 'dracula' }
+" Plug 'embark-theme/vim', { 'as': 'embark', 'branch': 'main' }
 
 "platformio
 Plug 'coddingtonbear/neomake-platformio'
@@ -64,24 +59,3 @@ Plug 'coddingtonbear/neomake-platformio'
 Plug 'tikhomirov/vim-glsl'
 Plug 'jparise/vim-graphql'
 call plug#end()
-
-
-" coc extensions
-let g:coc_global_extensions = []
-" easily install extension
-let g:coc_global_extensions += ['coc-marketplace']
-" snippets
-let g:coc_global_extensions += ['coc-ultisnips']
-" json support & coc-settings.json autocomplete
-let g:coc_global_extensions += ['coc-json']
-" vimscript support
-let g:coc_global_extensions += ['coc-vimlsp']
-" javascript/typescript
-let g:coc_global_extensions += ['coc-eslint', 'coc-tsserver']
-" emmet
-let g:coc_global_extensions += ['coc-emmet']
-" css
-let g:coc_global_extensions += ['coc-css']
-" react
-let g:coc_global_extensions += ['coc-react-refactor', 'coc-cssmodules']
-

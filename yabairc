@@ -68,6 +68,4 @@ yabai -m signal --add event=window_title_changed action="osascript -e 'tell appl
 
 # End simple bar comms
 
-
-
 echo "yabai configuration loaded.."
