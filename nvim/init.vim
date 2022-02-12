@@ -1,9 +1,37 @@
-syntax enable
-syntax on
+
+"syntax enable
+"syntax on
+
 let mapleader = ','
 
 source ~/dotfiles/nvim/plugins.vim
-source ~/dotfiles/nvim/coc.vim
+" source ~/dotfiles/nvim/coc.vim
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  -- One of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = "maintained",
+
+  -- Install languages synchronously (only applied to `ensure_installed`)
+  sync_install = false,
+
+  -- List of parsers to ignore installing
+  -- ignore_install = { "javascript" },
+
+  highlight = {
+    -- `false` will disable the whole extension
+    enable = true,
+
+    -- list of language that will be disabled
+    disable = { "c", "rust" },
+
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
+EOF
 
 if (has("termguicolors"))
   set termguicolors
@@ -17,12 +45,15 @@ noremap <Right> <NOP>
 " let g:SnazzyTransparent = 1
 " let g:lightline = {'colorscheme': 'snazzy'}
 " colorscheme snazzy
-colorscheme embark
-let g:embark_terminal_italics = 1
 
-function! CocCurrentFunction()
-    return get(b:, 'coc_current_function', '')
-endfunction
+colorscheme catppuccin
+
+"colorscheme embark
+"let g:embark_terminal_italics = 1
+
+" function! CocCurrentFunction()
+    " return get(b:, 'coc_current_function', '')
+" endfunction
 
 let g:lightline = {
       \ 'colorscheme': 'wombat',
@@ -30,12 +61,14 @@ let g:lightline = {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
       \ },
-      \ 'component_function': {
-      \   'cocstatus': 'coc#status',
-      \   'currentfunction': 'CocCurrentFunction'
-      \ },
-      \ }
+     \ }
+      " \ 'component_function': {
+      " \   'cocstatus': 'coc#status',
+      " \   'currentfunction': 'CocCurrentFunction'
+      " \ },
 
+"keep the diagnostics gutter open      
+set signcolumn=yes
 "let me change buffers
 set hidden
 "soft identation tab=2 spaces
@@ -83,7 +116,7 @@ nnoremap Y y$
 "keep it centred 
 nnoremap n nzzzv
 nnoremap N Nzzzv
-nnoremap J mzJ'z
+"nnoremap J mzJ'z
 
 " control udo sequence
 inoremap , ,<c-g>u
@@ -99,8 +132,14 @@ inoremap <leader>s <C-c>:w<cr>
 noremap <leader>q :q<cr>
 
 " move lines and reindent
-vnoremap J :m '>+1<CR>gv=gv
+"vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+
+" Show the quickfix window
+nnoremap <Leader>co :copen<CR>
+
+" Hide the quickfix window
+nnoremap <Leader>cc :cclose<CR>
 
 " yank to osxs clipboard
 set clipboard=unnamed
@@ -130,34 +169,72 @@ let g:ackprg = 'ag --vimgrep'
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 
-" Ale config 4 prettier (linter)
-"    'javascript': ['prettier', 'eslint'],
-let g:ale_fixers = {
-\    'javascript': ['eslint'],
-\    'typescript': ['prettier'],
-\    'typescriptreact': ['prettier'],
-\    'scss': ['prettier'],
-\    'html': ['prettier']
-\}
+" " Ale config 4 prettier (linter)
+" "    'javascript': ['prettier', 'eslint'],
+" let g:ale_fixers = {
+" \    'javascript': ['eslint'],
+" \    'typescript': ['prettier'],
+" \    'typescriptreact': ['prettier'],
+" \    'scss': ['prettier'],
+" \    'html': ['prettier']
+" \}
 
-let g:ale_linters = {
-\   'javascript': ['eslint', 'jshint'],
-\   'typescript': ['tsserver', 'tslint'],
-\   'vue': ['eslint']
-\}
-" let g:ale_fixers = ['prettier', 'eslint']
-let g:ale_fix_on_save = 1
-let g:ale_javascript_prettier_use_local_config = 1
+" let g:ale_linters = {
+" \   'javascript': ['eslint', 'jshint'],
+" \   'typescript': ['tsserver', 'tslint'],
+" \   'vue': ['eslint']
+" \}
+" " let g:ale_fixers = ['prettier', 'eslint']
+" let g:ale_fix_on_save = 1
+" let g:ale_javascript_prettier_use_local_config = 1
 
-let g:ale_set_highlights = 0
-" let g:ale_javascript_eslint_suppress_eslintignore = 1
-" let g:ale_javascript_eslint_suppress_missing_config = 1
+" let g:ale_set_highlights = 0
+" " let g:ale_javascript_eslint_suppress_eslintignore = 1
+" " let g:ale_javascript_eslint_suppress_missing_config = 1
 
-let g:ale_sign_error = '●'
-let g:ale_sign_warning = '●'
-hi link ALEErrorSign    Error
-hi link ALEWarningSign  Warn
+" let g:ale_sign_error = '●'
+" let g:ale_sign_warning = '●'
+" hi link ALEErrorSign    Error
+" hi link ALEWarningSign  Warn
 
+luafile ~/dotfiles/nvim/lua/init.lua
+" luafile ~/dotfiles/nvim/compe_config.lua
+
+
+" trouble
+nnoremap <leader>xx <cmd>TroubleToggle<cr>
+nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr>
+nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr>
+nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
+nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
+nnoremap gR <cmd>TroubleToggle lsp_references<cr>
+" telescope
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" Expand
+imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+
+" Expand or jump
+imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+
+" Jump forward or backward
+imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+
+" Select or cut text to use as $TM_SELECTED_TEXT in the next snippet.
+" See https://github.com/hrsh7th/vim-vsnip/pull/50
+nmap        s   <Plug>(vsnip-select-text)
+xmap        s   <Plug>(vsnip-select-text)
+nmap        S   <Plug>(vsnip-cut-text)
+xmap        S   <Plug>(vsnip-cut-text)
+highlight LspDiagnosticsDefaultError guifg=#FF0000
 " Fuzzy finder
 set rtp+=/usr/local/opt/fzf
 set rtp+=~/.fzf

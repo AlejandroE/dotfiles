@@ -112,10 +112,13 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-[ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
-if [ -e /Users/alejandroe/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/alejandroe/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 [[ -f /opt/dev/sh/chruby/chruby.sh ]] && type chruby >/dev/null 2>&1 || chruby () { source /opt/dev/sh/chruby/chruby.sh; chruby "$@"; }
 
-[[ -x /usr/local/bin/brew ]] && eval $(/usr/local/bin/brew shellenv)
+[[ -x /opt/homebrew/bin/brew ]] && eval $(/opt/homebrew/bin/brew shellenv)
+
+[ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
+
+
+
 source $HOME/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
