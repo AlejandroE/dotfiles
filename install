@@ -95,6 +95,8 @@ main () {
       rm -f $HOME/.zshrc
       rm -f $HOME/.gitconfig
       mkdir $HOME/.config
+      # dotbot wants python to to exist
+      alias python=python3
     fi
   fi
 }
