@@ -1,4 +1,3 @@
-
 "syntax enable
 "syntax on
 
@@ -6,32 +5,6 @@ let mapleader = ','
 
 source ~/dotfiles/nvim/plugins.vim
 " source ~/dotfiles/nvim/coc.vim
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  -- One of "all", "maintained" (parsers with maintainers), or a list of languages
-  ensure_installed = "maintained",
-
-  -- Install languages synchronously (only applied to `ensure_installed`)
-  sync_install = false,
-
-  -- List of parsers to ignore installing
-  -- ignore_install = { "javascript" },
-
-  highlight = {
-    -- `false` will disable the whole extension
-    enable = true,
-
-    -- list of language that will be disabled
-    disable = { "c", "rust" },
-
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
-  },
-}
-EOF
 
 if (has("termguicolors"))
   set termguicolors
@@ -41,10 +14,6 @@ noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
-
-" let g:SnazzyTransparent = 1
-" let g:lightline = {'colorscheme': 'snazzy'}
-" colorscheme snazzy
 
 colorscheme catppuccin
 
@@ -116,7 +85,7 @@ nnoremap Y y$
 "keep it centred 
 nnoremap n nzzzv
 nnoremap N Nzzzv
-"nnoremap J mzJ'z
+nnoremap J mzJ'z
 
 " control udo sequence
 inoremap , ,<c-g>u
@@ -132,7 +101,7 @@ inoremap <leader>s <C-c>:w<cr>
 noremap <leader>q :q<cr>
 
 " move lines and reindent
-"vnoremap J :m '>+1<CR>gv=gv
+vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
 " Show the quickfix window
@@ -165,10 +134,6 @@ au BufNewFile,BufRead *.ejs set filetype=html
 " Ag
 let g:ackprg = 'ag --vimgrep'
 
-" NerdCommenter
-" Add spaces after comment delimiters by default
-let g:NERDSpaceDelims = 1
-
 " " Ale config 4 prettier (linter)
 " "    'javascript': ['prettier', 'eslint'],
 " let g:ale_fixers = {
@@ -198,43 +163,44 @@ let g:NERDSpaceDelims = 1
 " hi link ALEWarningSign  Warn
 
 luafile ~/dotfiles/nvim/lua/init.lua
-" luafile ~/dotfiles/nvim/compe_config.lua
 
-
-" trouble
+" Trouble
 nnoremap <leader>xx <cmd>TroubleToggle<cr>
 nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr>
 nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr>
 nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
 nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
 nnoremap gR <cmd>TroubleToggle lsp_references<cr>
-" telescope
+
+" Telescope
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
-" Expand
+" Snipets
+" expand
 imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
 smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
 
-" Expand or jump
+" expand or jump
 imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
 smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
 
-" Jump forward or backward
+" jump forward or backward
 imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
 smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
 imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
 smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
 
-" Select or cut text to use as $TM_SELECTED_TEXT in the next snippet.
-" See https://github.com/hrsh7th/vim-vsnip/pull/50
+" select or cut text to use as $TM_SELECTED_TEXT in the next snippet.
+" see https://github.com/hrsh7th/vim-vsnip/pull/50
 nmap        s   <Plug>(vsnip-select-text)
 xmap        s   <Plug>(vsnip-select-text)
 nmap        S   <Plug>(vsnip-cut-text)
 xmap        S   <Plug>(vsnip-cut-text)
 highlight LspDiagnosticsDefaultError guifg=#FF0000
+
 " Fuzzy finder
 set rtp+=/usr/local/opt/fzf
 set rtp+=~/.fzf
