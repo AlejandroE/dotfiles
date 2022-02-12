@@ -73,6 +73,26 @@ install_pure_prompt () {
   git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
 }
 
+install_npm_packages () {
+    # Check for npm
+    if is_installed npm; then
+        printf "Installing Node.js packages..."
+
+        # List of npm packages
+        local packages="typescript typescript-language-server eslint prettier"
+
+        # Install packages globally and quietly
+        npm install $packages --global --quiet
+
+        [[ $? ]] && printf "Done"
+    else
+        printf "\n"
+        printf "Error: npm not found."
+        printf "Aborting...\n"
+        exit
+    fi
+}
+
 main () {
   local dot_files="${@:-.*}"
   local current_dir
@@ -95,8 +115,6 @@ main () {
       rm -f $HOME/.zshrc
       rm -f $HOME/.gitconfig
       mkdir $HOME/.config
-      # dotbot wants python to to exist
-      alias python=python3
     fi
   fi
 }
@@ -115,5 +133,6 @@ git submodule update --init --recursive "${DOTBOT_DIR}"
 "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" $@
 
 install_pure_prompt
+install_npm_packages
 install_nvim_dependencies
 
