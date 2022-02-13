@@ -68,9 +68,11 @@ step() {
 }
 
 install_pure_prompt () {
-  step "Installing pure"
-  mkdir -p "$HOME/.zsh"
-  git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
+  if ! ls -A "$HOME/.zsh/pure" &> /dev/null; then
+    step "Installing pure"
+    mkdir -p "$HOME/.zsh"
+    git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
+  fi
 }
 
 install_npm_packages () {
