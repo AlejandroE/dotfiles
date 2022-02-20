@@ -107,8 +107,8 @@ vnoremap K :m '<-2<CR>gv=gv
 " Show the quickfix window
 nnoremap <Leader>co :copen<CR>
 
-" Hide the quickfix window
-nnoremap <Leader>cc :cclose<CR>
+" Hide the quickfix window % loclist
+nnoremap <Leader>cc :windo lcl\|ccl<CR>
 
 " yank to osxs clipboard
 set clipboard=unnamed
