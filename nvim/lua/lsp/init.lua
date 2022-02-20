@@ -1,4 +1,4 @@
-require "telescope"
+require "lsp.telescope"
 require "lsp.ui"
 require "lsp.cmp"
 require "lsp.on_attach"

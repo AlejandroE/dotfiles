@@ -20,12 +20,17 @@ Plug 'folke/trouble.nvim'
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
+
+Plug 'AckslD/nvim-neoclip.lua'
+
+Plug 'pwntester/octo.nvim'
 
 Plug 'numToStr/Comment.nvim'
 """""

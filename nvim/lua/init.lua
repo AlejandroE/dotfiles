@@ -1,3 +1,5 @@
-require('Comment').setup()
+require "Comment".setup()
+require "neoclip".setup()
+require "octo".setup()
 require "treesitter"
 require "lsp"
