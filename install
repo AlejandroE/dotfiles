@@ -136,3 +136,6 @@ install_pure_prompt
 install_npm_packages
 install_nvim_dependencies
 
+if ! ls -A "$HOME/.local/share/nvim/plugged/telescope-fzf-native.nvim" &> /dev/null; then
+  make -C "$HOME/.local/share/nvim/plugged/telescope-fzf-native.nvim"
+fi
