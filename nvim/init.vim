@@ -204,7 +204,7 @@ highlight LspDiagnosticsDefaultError guifg=#FF0000
 " Fuzzy finder
 set rtp+=/usr/local/opt/fzf
 set rtp+=~/.fzf
-nmap ; :Buffers<CR>
+nmap ; :Telescope oldfiles<CR>
 " nmap <Leader>r :Tags<CR>
 nmap <Leader>t :Files<CR>
 nmap <Leader>a :Find<CR>

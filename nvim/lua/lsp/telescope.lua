@@ -4,7 +4,8 @@ _telescope.setup {
   defaults = {
     preview = {
       treesitter = false
-    }
+    },
+    path_display={"truncate"}
   }
 }
 require('telescope').load_extension('neoclip')
