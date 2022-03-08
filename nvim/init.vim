@@ -35,6 +35,9 @@ let g:lightline = {
       " \   'cocstatus': 'coc#status',
       " \   'currentfunction': 'CocCurrentFunction'
       " \ },
+"vim-test config
+let g:test#javascript#runner = 'jest'
+let test#strategy = 'neovim'
 
 "keep the diagnostics gutter open      
 set signcolumn=yes

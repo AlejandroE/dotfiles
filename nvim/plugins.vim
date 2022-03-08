@@ -57,6 +57,8 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 " Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 " Plug 'embark-theme/vim', { 'as': 'embark', 'branch': 'main' }
 
+Plug 'vim-test/vim-test'
+
 "platformio
 Plug 'coddingtonbear/neomake-platformio'
 "webgl
