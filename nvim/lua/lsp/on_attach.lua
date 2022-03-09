@@ -13,7 +13,11 @@ vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<C
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
+ 
+  -- lsp-tsitils %null-ls
+  local ts_utils = require("nvim-lsp-ts-utils")
+  ts_utils.setup({})
+  ts_utils.setup_client(client)
   -- let null-ls handle formatting
   client.resolved_capabilities.document_formatting = false
   client.resolved_capabilities.document_range_formatting = false
