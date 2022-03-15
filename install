@@ -112,7 +112,7 @@ main () {
       sudo add-apt-repository -y ppa:neovim-ppa/unstable
       sudo apt update
 
-      install_apt_packages
+      # install_apt_packages
       rm -f $HOME/.zshrc
       rm -f $HOME/.gitconfig
     fi
@@ -136,6 +136,6 @@ install_pure_prompt
 install_npm_packages
 install_nvim_dependencies
 
-if ! ls -A "$HOME/.local/share/nvim/plugged/telescope-fzf-native.nvim" &> /dev/null; then
+if ls -A "$HOME/.local/share/nvim/plugged/telescope-fzf-native.nvim" &> /dev/null; then
   make -C "$HOME/.local/share/nvim/plugged/telescope-fzf-native.nvim"
 fi
