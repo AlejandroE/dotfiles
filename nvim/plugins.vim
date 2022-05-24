@@ -31,7 +31,7 @@ Plug 'AckslD/nvim-neoclip.lua'
 
 Plug 'pwntester/octo.nvim'
 
-Plug 'numToStr/Comment.nvim', { 'tag': 'v0.6' }
+Plug 'numToStr/Comment.nvim'
 """""
 Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 Plug 'scrooloose/nerdtree'
