@@ -19,8 +19,8 @@ local on_attach = function(client, bufnr)
   ts_utils.setup({})
   ts_utils.setup_client(client)
   -- let null-ls handle formatting
-  client.resolved_capabilities.document_formatting = false
-  client.resolved_capabilities.document_range_formatting = false
+  client.server_capabilities.document_formatting = false
+  client.server_capabilities.document_range_formatting = false
 
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
