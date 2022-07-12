@@ -178,8 +178,9 @@ nnoremap gR <cmd>TroubleToggle lsp_references<cr>
 " Telescope
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fr <cmd>Telescope oldfiles<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nmap ; :Telescope buffers<CR>
 
 " Snipets
 " expand
@@ -207,7 +208,6 @@ highlight LspDiagnosticsDefaultError guifg=#FF0000
 " Fuzzy finder
 set rtp+=/usr/local/opt/fzf
 set rtp+=~/.fzf
-nmap ; :Telescope oldfiles<CR>
 " nmap <Leader>r :Tags<CR>
 nmap <Leader>t :Files<CR>
 nmap <Leader>a :Find<CR>
