@@ -6,6 +6,12 @@ _telescope.setup {
       treesitter = false
     },
     path_display={"truncate"}
+  },
+  pickers = {
+    buffers = {
+      ignore_current_buffer = true,
+      sort_mru = true,
+    },
   }
 }
 require('telescope').load_extension('neoclip')
