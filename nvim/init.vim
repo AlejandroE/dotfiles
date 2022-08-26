@@ -82,6 +82,9 @@ set tm=500
 set ruler
 set number relativenumber
 
+" nvim-cmp
+set completeopt=menu,menuone,noselect
+
 " beahve like other caps
 nnoremap Y y$
 
@@ -204,6 +207,10 @@ xmap        s   <Plug>(vsnip-select-text)
 nmap        S   <Plug>(vsnip-cut-text)
 xmap        S   <Plug>(vsnip-cut-text)
 highlight LspDiagnosticsDefaultError guifg=#FF0000
+
+let g:vsnip_filetypes = {}
+let g:vsnip_filetypes.javascriptreact = ['javascript']
+let g:vsnip_filetypes.typescriptreact = ['typescript']
 
 " Fuzzy finder
 set rtp+=/usr/local/opt/fzf
