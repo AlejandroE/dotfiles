@@ -15,7 +15,13 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
+
+lua << EOF
+  require("catppuccin").setup()
+EOF
+let g:catppuccin_flavour = "mocha"
 colorscheme catppuccin
+
 
 "colorscheme embark
 "let g:embark_terminal_italics = 1
@@ -77,6 +83,8 @@ set noerrorbells
 set novisualbell
 set t_vb=
 set tm=500
+" disable mouse default in neovim
+set mouse=
 
 " relative line numers
 set ruler
