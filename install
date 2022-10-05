@@ -95,6 +95,17 @@ install_npm_packages () {
     fi
 }
 
+install_neovim () {
+  sudo apt purge -y neovim
+  curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+  chmod u+x nvim.appimage
+  ./nvim.appimage --appimage-extract
+  ./squashfs-root/AppRun --version
+
+  sudo mv squashfs-root /
+  sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
+}
+
 main () {
   local dot_files="${@:-.*}"
   local current_dir
@@ -107,11 +118,7 @@ main () {
     fi
 
     if [[ $SPIN ]]; then
-      sudo apt purge -y neovim
-      sudo add-apt-repository -y ppa:neovim-ppa/unstable
-      sudo apt-get -y update
-      sudo apt-get -y install neovim     # add neovim 6 apt-repo
-
+      install_neovim
       # install_apt_packages
       rm -f $HOME/.zshrc
       rm -f $HOME/.gitconfig
