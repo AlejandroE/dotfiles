@@ -1,5 +1,4 @@
-"syntax enable
-"syntax on
+syntax on
 
 let mapleader = ','
 
