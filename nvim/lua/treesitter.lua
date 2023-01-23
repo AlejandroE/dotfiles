@@ -1,7 +1,6 @@
 require'nvim-treesitter.configs'.setup {
   -- One of "all", "maintained" (parsers with maintainers), or a list of languages
-  ensure_installed = "all",
-  ignore_install = { "phpdoc", "tree-sitter-phpdoc" },
+  ensure_installed = { "bash", "cmake", "comment", "cpp", "css", "diff", "dockerfile", "git_rebase", "gitattributes", "gitcommit", "gitignore", "glsl", "graphql", "help", "html", "javascript", "json", "lua", "markdown", "markdown_inline", "python", "regex", "rust", "scss", "tsx", "typescript", "vim","yaml" },
 
   -- Install languages synchronously (only applied to `ensure_installed`)
   sync_install = false,
@@ -12,9 +11,6 @@ require'nvim-treesitter.configs'.setup {
   highlight = {
     -- `false` will disable the whole extension
     enable = true,
-
-    -- list of language that will be disabled
-    disable = { "c", "rust" },
 
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
