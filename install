@@ -81,10 +81,14 @@ install_npm_packages () {
         printf "Installing Node.js packages..."
 
         # List of npm packages
-        local packages="typescript typescript-language-server eslint prettier"
+        local packages="typescript typescript-language-server prettier vscode-langservers-extracted"
 
         # Install packages globally and quietly
-        npm install $packages --global --quiet
+        if [[ $SPIN ]]; then
+          yarn global add $packages --silent
+        else
+          npm install $packages --global --quiet
+        fi
 
         [[ $? ]] && printf "Done"
     else
