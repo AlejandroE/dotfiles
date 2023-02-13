@@ -127,6 +127,11 @@ main () {
       # install_apt_packages
       rm -f $HOME/.zshrc
       rm -f $HOME/.gitconfig
+
+      if [ -f /etc/spin/secrets/github-copilot ]; then
+        mkdir -p "${HOME}/.config/github-copilot"
+        cp /etc/spin/secrets/github-copilot "${HOME}/.config/github-copilot/hosts.json"
+      fi
     fi
   fi
 }
