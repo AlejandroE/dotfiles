@@ -123,7 +123,7 @@ main () {
     fi
 
     if [[ $SPIN ]]; then
-      install_neovim
+      # install_neovim
       # install_apt_packages
       rm -f $HOME/.zshrc
       rm -f $HOME/.gitconfig
