@@ -1,6 +1,6 @@
 require'nvim-treesitter.configs'.setup {
   -- One of "all", "maintained" (parsers with maintainers), or a list of languages
-  ensure_installed = { "bash", "cmake", "comment", "cpp", "css", "diff", "dockerfile", "git_rebase", "gitattributes", "gitcommit", "glsl", "graphql", "help", "html", "javascript", "json", "lua", "markdown", "markdown_inline", "python", "regex", "rust", "scss", "tsx", "typescript", "vim","yaml" },
+  ensure_installed = { "bash", "cmake", "comment", "cpp", "css", "diff", "dockerfile", "git_rebase", "gitattributes", "gitcommit", "glsl", "graphql", "html", "javascript", "json", "lua", "markdown", "markdown_inline", "python", "regex", "rust", "scss", "tsx", "typescript", "vim", "vimdoc", "yaml" },
 
   -- Install languages synchronously when headless (only applied to `ensure_installed`)
   sync_install = #vim.api.nvim_list_uis() == 0,

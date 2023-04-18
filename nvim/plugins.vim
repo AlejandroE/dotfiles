@@ -36,7 +36,7 @@ Plug 'goolord/alpha-nvim'
 Plug 'numToStr/Comment.nvim'
 """""
 Plug 'catppuccin/nvim', {'as': 'catppuccin'}
-Plug 'scrooloose/nerdtree'
+" Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-eunuch'
