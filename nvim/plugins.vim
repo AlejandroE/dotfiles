@@ -68,5 +68,4 @@ Plug 'coddingtonbear/neomake-platformio'
 Plug 'tikhomirov/vim-glsl'
 Plug 'jparise/vim-graphql'
 Plug 'github/copilot.vim'
-Plug 'shopify/spin-hud'
 call plug#end()

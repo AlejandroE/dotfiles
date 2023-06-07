@@ -85,11 +85,7 @@ install_npm_packages () {
         local packages="typescript typescript-language-server prettier vscode-langservers-extracted"
 
         # Install packages globally and quietly
-        if [[ $SPIN ]]; then
-          yarn global add $packages --silent
-        else
-          npm install $packages --global --quiet
-        fi
+        npm install $packages --global --quiet
 
         [[ $? ]] && printf "Done"
     else
@@ -120,18 +116,6 @@ main () {
     if [[ $os = "Darwin" ]]; then
       install_homebrew
       install_homebrew_packages
-    fi
-
-    if [[ $SPIN ]]; then
-      # install_neovim
-      # install_apt_packages
-      rm -f $HOME/.zshrc
-      rm -f $HOME/.gitconfig
-
-      if [ -f /etc/spin/secrets/github-copilot ]; then
-        mkdir -p "${HOME}/.config/github-copilot"
-        cp /etc/spin/secrets/github-copilot "${HOME}/.config/github-copilot/hosts.json"
-      fi
     fi
   fi
 }
