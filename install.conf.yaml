@@ -8,8 +8,16 @@
     ~/.gitconfig: gitconfig
     ~/.zshrc: zshrc
     ~/.zsh: zsh
+    ~/.Xresources: Xresources
+    ~/.xinitrc: xinitrc
     ~/.tmuxinator: tmuxinator/
     ~/.config/nvim: nvim/
+    ~/.config/bspwn: config/bspwn
+    ~/.config/sxhdrc: config/sxhdrc
+    ~/.config/kitty: config/kitty
+    ~/.config/picom: config/picom
+    ~/.config/polybar: config/polybar
+    ~/.config/rofi: config/rofi
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
