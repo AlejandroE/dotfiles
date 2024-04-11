@@ -2,7 +2,8 @@ syntax on
 
 let mapleader = ','
 
-source ~/dotfiles/nvim/plugins.vim
+luafile ~/dotfiles/nvim/lua/init.lua
+" source ~/dotfiles/nvim/plugins.vim
 " source ~/dotfiles/nvim/coc.vim
 
 if (has("termguicolors"))
@@ -15,11 +16,11 @@ noremap <Left> <NOP>
 noremap <Right> <NOP>
 
 
-lua << EOF
-  require("catppuccin").setup()
-EOF
-let g:catppuccin_flavour = "mocha"
-colorscheme catppuccin
+" lua << EOF
+"   require("catppuccin").setup()
+" EOF
+" let g:catppuccin_flavour = "mocha"
+" colorscheme catppuccin
 
 
 "colorscheme embark
@@ -175,7 +176,6 @@ let g:ackprg = 'ag --vimgrep'
 " hi link ALEErrorSign    Error
 " hi link ALEWarningSign  Warn
 
-luafile ~/dotfiles/nvim/lua/init.lua
 
 " Trouble
 nnoremap <leader>xx <cmd>TroubleToggle<cr>
