@@ -5,7 +5,7 @@ _telescope.setup {
     preview = {
       treesitter = false
     },
-    path_display={"truncate"}
+    path_display={"shorten"}
   },
   pickers = {
     buffers = {

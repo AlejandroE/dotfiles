@@ -2,7 +2,8 @@ syntax on
 
 let mapleader = ','
 
-source ~/dotfiles/nvim/plugins.vim
+luafile ~/dotfiles/nvim/lua/init.lua
+" source ~/dotfiles/nvim/plugins.vim
 " source ~/dotfiles/nvim/coc.vim
 
 if (has("termguicolors"))
@@ -14,12 +15,11 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
-
-lua << EOF
-  require("catppuccin").setup()
-EOF
-let g:catppuccin_flavour = "mocha"
-colorscheme catppuccin
+" lua << EOF
+"   require("catppuccin").setup()
+" EOF
+" let g:catppuccin_flavour = "mocha"
+" colorscheme catppuccin
 
 
 "colorscheme embark
@@ -29,13 +29,13 @@ colorscheme catppuccin
     " return get(b:, 'coc_current_function', '')
 " endfunction
 
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
-      \ },
-     \ }
+" let g:lightline = {
+"       \ 'colorscheme': 'catppuccin',
+"       \ 'active': {
+"       \   'left': [ [ 'mode', 'paste' ],
+"       \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
+"       \ },
+"      \ }
       " \ 'component_function': {
       " \   'cocstatus': 'coc#status',
       " \   'currentfunction': 'CocCurrentFunction'
@@ -175,10 +175,9 @@ let g:ackprg = 'ag --vimgrep'
 " hi link ALEErrorSign    Error
 " hi link ALEWarningSign  Warn
 
-luafile ~/dotfiles/nvim/lua/init.lua
 
 " Trouble
-nnoremap <leader>xx <cmd>TroubleToggle<cr>
+nnoremap <leader>xx <cmd>Trouble diagnostics toggle<cr>
 nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr>
 nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr>
 nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
