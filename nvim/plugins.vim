@@ -69,5 +69,5 @@ Plug 'coddingtonbear/neomake-platformio'
 "webgl
 Plug 'tikhomirov/vim-glsl'
 Plug 'jparise/vim-graphql'
-Plug 'github/copilot.vim'
+" Plug 'github/copilot.vim'
 call plug#end()

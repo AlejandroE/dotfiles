@@ -15,7 +15,6 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
-
 " lua << EOF
 "   require("catppuccin").setup()
 " EOF
@@ -30,13 +29,13 @@ noremap <Right> <NOP>
     " return get(b:, 'coc_current_function', '')
 " endfunction
 
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
-      \ },
-     \ }
+" let g:lightline = {
+"       \ 'colorscheme': 'catppuccin',
+"       \ 'active': {
+"       \   'left': [ [ 'mode', 'paste' ],
+"       \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
+"       \ },
+"      \ }
       " \ 'component_function': {
       " \   'cocstatus': 'coc#status',
       " \   'currentfunction': 'CocCurrentFunction'
@@ -178,7 +177,7 @@ let g:ackprg = 'ag --vimgrep'
 
 
 " Trouble
-nnoremap <leader>xx <cmd>TroubleToggle<cr>
+nnoremap <leader>xx <cmd>Trouble diagnostics toggle<cr>
 nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr>
 nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr>
 nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>

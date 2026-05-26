@@ -1,3 +1,3 @@
-require('lspconfig')['eslint'].setup {
+vim.lsp.config('eslint', {
   capabilities = capabilities
-}
+})
