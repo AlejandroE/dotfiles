@@ -36,6 +36,7 @@ fi
 
 setxkbmap us &
 picom -fb &
+dunst &
 nitrogen --restore &
 xsetroot -cursor_name left_ptr &
 exec bspwm
